@@ -51,7 +51,7 @@ Plugin.create(:d250g2) do
     message = "@#{id}"
     filename=replyArray.sample
     Thread.new {
-      @clients[Service.primary.idname].update_with_media(message, File.new("~/.mikutter/plugin/d250g2_emmoji/emoji/" + filename))
+      @clients[Service.primary.idname].update_with_media(message, File.new("~/.mikutter/plugin/d250g2_emoji/emoji/" + filename))
     }
   end
 
