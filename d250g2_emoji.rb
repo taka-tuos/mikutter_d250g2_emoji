@@ -31,7 +31,7 @@ Plugin.create(:d250g2) do
   end
 
   begin
-    replyArray = YAML.load_file(File.join(__dir__, "config.yml"))
+    @reply_array = YAML.load_file(File.join(__dir__, "config.yml"))
   rescue LoadError
     notice "\"config.yml\" not found."
   end
@@ -47,9 +47,9 @@ Plugin.create(:d250g2) do
   end
 
   def emoji(message)
-    id=message.idname
+    id = message.idname
     message = "@#{id}"
-    filename=replyArray.sample
+    filename = @reply_array.sample
     Thread.new {
       @clients[Service.primary.idname].update_with_media(message, File.new(File.join(__dir__, 'emoji', filename)))
     }
