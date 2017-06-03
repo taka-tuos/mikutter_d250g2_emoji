@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-Plugin.create(:d250g2) do
+Plugin.create(:d250g2_emoji) do
   begin
     @reply_array = YAML.load_file(File.join(__dir__, 'config.yml'))
   rescue LoadError
     notice '"config.yml" not found.'
   end
 
-  command(:d250g2,
+  command(:d250g2_emoji_post,
           name: 'd250g2-emoji',
           condition: Plugin::Command[:CanReplyAll],
           visible: true,
