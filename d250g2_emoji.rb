@@ -31,13 +31,13 @@ Plugin.create(:d250g2) do
   end
 
   begin
-    @reply_array = YAML.load_file(File.join(__dir__, "config.yml"))
+    @reply_array = YAML.load_file(File.join(__dir__, 'config.yml'))
   rescue LoadError
-    notice "\"config.yml\" not found."
+    notice '"config.yml" not found.'
   end
 
   command(:d250g2,
-          name: "d250g2-emoji",
+          name: 'd250g2-emoji',
           condition: Plugin::Command[:CanReplyAll],
           visible: true,
           role: :timeline) do |m|
@@ -46,8 +46,8 @@ Plugin.create(:d250g2) do
     end
   end
 
-  def emoji(message)
-    id = message.idname
+  def emoji(m)
+    id = m.idname
     message = "@#{id}"
     filename = @reply_array.sample
     Thread.new {
