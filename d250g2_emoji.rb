@@ -31,7 +31,7 @@ Plugin.create(:d250g2) do
   end
 
   begin
-    replyArray = YAML.load_file(File.join(File.dirname(__FILE__), "config.yml"))
+    replyArray = YAML.load_file(File.join(__dir__, "config.yml"))
   rescue LoadError
     notice "\"config.yml\" not found."
   end
